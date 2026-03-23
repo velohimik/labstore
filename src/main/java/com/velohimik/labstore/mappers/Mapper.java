@@ -1,4 +1,4 @@
-package com.example.labstore.mappers;
+package com.velohimik.labstore.mappers;
 
 public interface Mapper<Dto, Entity> {
 

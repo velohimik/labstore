@@ -1,4 +1,4 @@
-package com.example.labstore.domain.embedders;
+package com.velohimik.labstore.domain.embedders;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

@@ -10,7 +10,12 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
 
+  flyway:
+    enabled: true
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
 server:
   port: 60006

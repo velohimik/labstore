@@ -1,4 +1,4 @@
-package com.example.labstore.domain.enums;
+package com.velohimik.labstore.domain.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

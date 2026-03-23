@@ -1,4 +1,4 @@
-package com.example.labstore;
+package com.velohimik.labstore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,13 +1,13 @@
-package com.example.labstore.domain.dto;
+package com.velohimik.labstore.domain.dto;
 
-import com.example.labstore.domain.embedders.HazardClass;
-import com.example.labstore.domain.enums.ReagentType;
+import com.velohimik.labstore.domain.embedders.HazardClass;
+import com.velohimik.labstore.domain.enums.ReagentType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Data
@@ -23,6 +23,6 @@ public class ReagentDto {
     private Double molecularWeight;
     private ReagentType reagentType;
     private HazardClass hazardClass;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
+    private Timestamp createdDate;
+    private Timestamp updatedDate;
 }

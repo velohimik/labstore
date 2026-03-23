@@ -1,4 +1,4 @@
-package com.example.labstore.configs;
+package com.velohimik.labstore.configs;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;

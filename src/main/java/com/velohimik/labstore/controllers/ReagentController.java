@@ -1,7 +1,7 @@
-package com.example.labstore.controllers;
+package com.velohimik.labstore.controllers;
 
-import com.example.labstore.domain.dto.ReagentDto;
-import com.example.labstore.services.ReagentService;
+import com.velohimik.labstore.domain.dto.ReagentDto;
+import com.velohimik.labstore.services.ReagentService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,12 +1,13 @@
-package com.example.labstore.domain.entities;
+package com.velohimik.labstore.domain.entities;
 
-import com.example.labstore.domain.embedders.HazardClass;
+import com.velohimik.labstore.domain.embedders.HazardClass;
+import com.velohimik.labstore.domain.enums.ReagentType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
@@ -33,11 +34,14 @@ public class ReagentEntity {
     private Double molecularWeight;
 
     @Basic(optional = false)
-    private String reagentType;
+    private ReagentType reagentType;
 
     @Embedded
     private HazardClass hazardClass;
 
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
+    @Column(name = "create_date")
+    private Timestamp createdDate;
+
+    @Column(name = "update_date")
+    private Timestamp updatedDate;
 }

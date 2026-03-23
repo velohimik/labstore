@@ -1,17 +1,18 @@
-package com.example.labstore.services.impl;
+package com.velohimik.labstore.services.impl;
 
-import com.example.labstore.domain.dto.ReagentDto;
-import com.example.labstore.domain.entities.ReagentEntity;
-import com.example.labstore.mappers.Mapper;
-import com.example.labstore.repositories.ReagentRepository;
-import com.example.labstore.services.ReagentService;
+import com.velohimik.labstore.domain.dto.ReagentDto;
+import com.velohimik.labstore.domain.entities.ReagentEntity;
+import com.velohimik.labstore.mappers.Mapper;
+import com.velohimik.labstore.repositories.ReagentRepository;
+import com.velohimik.labstore.services.ReagentService;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.StreamSupport;
+import java.util.stream.Collectors;
 
 @Service
 public class ReagentServiceImpl implements ReagentService {
@@ -28,8 +29,8 @@ public class ReagentServiceImpl implements ReagentService {
     public ReagentDto createReagent(ReagentDto reagentDto) {
         ReagentEntity reagentEntity = mapper.mapToEntity(reagentDto);
         reagentEntity.setId(UUID.randomUUID());
-        reagentEntity.setCreatedDate(LocalDateTime.now());
-        reagentEntity.setUpdatedDate(LocalDateTime.now());
+        reagentEntity.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
+        reagentEntity.setUpdatedDate(Timestamp.valueOf(LocalDateTime.now()));
         ReagentEntity savedReagentEntity = reagentRepository.save(reagentEntity);
 
         return mapper.mapToDto(savedReagentEntity);
@@ -37,10 +38,7 @@ public class ReagentServiceImpl implements ReagentService {
 
     @Override
     public List<ReagentDto> findAllReagents() {
-        return StreamSupport
-                .stream(reagentRepository.findAll().spliterator(), false)
-                .map(mapper::mapToDto)
-                .toList();
+        return reagentRepository.findAll().stream().map(mapper::mapToDto).collect(Collectors.toList());
     }
 
     @Override
@@ -57,7 +55,7 @@ public class ReagentServiceImpl implements ReagentService {
             ReagentEntity reagentEntity = mapper.mapToEntity(reagentDto);
             reagentEntity.setId(id);
             reagentEntity.setCreatedDate(foundReagentEntity.get().getCreatedDate());
-            reagentEntity.setUpdatedDate(LocalDateTime.now());
+            reagentEntity.setUpdatedDate(Timestamp.valueOf(LocalDateTime.now()));
             ReagentEntity updatedReagentEntity = reagentRepository.save(reagentEntity);
 
             return Optional.of(mapper.mapToDto(updatedReagentEntity));

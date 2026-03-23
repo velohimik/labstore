@@ -1,6 +1,6 @@
-package com.example.labstore.services;
+package com.velohimik.labstore.services;
 
-import com.example.labstore.domain.dto.ReagentDto;
+import com.velohimik.labstore.domain.dto.ReagentDto;
 
 import java.util.List;
 import java.util.Optional;
