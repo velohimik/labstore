@@ -1,43 +1,38 @@
 package com.velohimik.labstore.domain.entities;
 
-import com.velohimik.labstore.domain.embedders.HazardClass;
-import com.velohimik.labstore.domain.enums.ReagentType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Immutable;
 
 import java.sql.Timestamp;
 import java.util.UUID;
 
 @Entity
-@Table(name = "reagents")
+@Table(name = "articles")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ReagentEntity {
+public class ArticleEntity {
 
     @Id
     private UUID id;
 
     @Basic(optional = false)
     @Column(unique = true)
-    private String casNumber;
+    @Immutable
+    private String code;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "reagent_id")
+    private ReagentEntity reagentEntity;
 
     @Basic(optional = false)
-    private String name;
+    private Double pureness;
 
     @Basic(optional = false)
-    private String formula;
-
-    @Basic(optional = false)
-    private Double molecularWeight;
-
-    @Basic(optional = false)
-    private ReagentType reagentType;
-
-    @Embedded
-    private HazardClass hazardClass;
+    private String manufacturer;
 
     @Column(name = "created_date")
     private Timestamp createdDate;

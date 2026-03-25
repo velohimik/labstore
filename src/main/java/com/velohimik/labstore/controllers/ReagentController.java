@@ -53,7 +53,6 @@ public class ReagentController {
         } else {
             reagentService.deleteOneReagent(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-
         }
     }
 }

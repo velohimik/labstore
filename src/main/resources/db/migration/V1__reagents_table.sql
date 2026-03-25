@@ -9,6 +9,6 @@ CREATE TABLE reagents (
     health int,
     instability int,
     specials varchar(10),
-    create_date timestamp,
-    update_date timestamp
+    created_date timestamp,
+    updated_date timestamp
 )

@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class ReagentServiceImpl implements ReagentService {
@@ -30,7 +29,7 @@ public class ReagentServiceImpl implements ReagentService {
         ReagentEntity reagentEntity = mapper.mapToEntity(reagentDto);
         reagentEntity.setId(UUID.randomUUID());
         reagentEntity.setCreatedDate(Timestamp.valueOf(LocalDateTime.now()));
-        reagentEntity.setUpdatedDate(Timestamp.valueOf(LocalDateTime.now()));
+        reagentEntity.setUpdatedDate(reagentEntity.getCreatedDate());
         ReagentEntity savedReagentEntity = reagentRepository.save(reagentEntity);
 
         return mapper.mapToDto(savedReagentEntity);
@@ -38,7 +37,7 @@ public class ReagentServiceImpl implements ReagentService {
 
     @Override
     public List<ReagentDto> findAllReagents() {
-        return reagentRepository.findAll().stream().map(mapper::mapToDto).collect(Collectors.toList());
+        return reagentRepository.findAll().stream().map(mapper::mapToDto).toList();
     }
 
     @Override
